@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+:root {
+  $brand: #2874f0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+ul,
+li,
+p,
+h1,
+h2 {
+  list-style: none;
+  text-decoration: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.App {
+  margin: 0 auto;
+  width: 85%;
+}
