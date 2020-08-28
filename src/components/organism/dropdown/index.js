@@ -7,7 +7,7 @@ const SelectStyle = styled(Select)`
   font-weight: 600;
   .ant-select-selector {
     border: none !important;
-    box-shadow: 0 2px 5px #164475;
+    box-shadow: 0 1px 5px #164475;
     height: 37px !important;
     padding: 5px 20px !important;
   }
@@ -28,7 +28,7 @@ const Drop = ({ onChange, name }) => {
   // console.log(check);
   return (
     <Form.Item initialValue="Subjective" name={name}>
-      <SelectStyle style={{ width: 200 }} onChange={onChange}>
+      <SelectStyle style={{ width: 125 }} onChange={onChange}>
         <Option value="Subjective">Subjective</Option>
         <Option value="Rating">Rating</Option>
       </SelectStyle>

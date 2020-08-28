@@ -1,63 +1,3 @@
-// import React, { useState } from "react";
-// import { Form} from "antd";
-// import styled from "@emotion/styled";
-// import Drop from "../dropdown";
-// import Answer from "../answer";
-// import Rating from "../rating/Rating";
-// import { InputStyle } from "../../atoms/InputStyle";
-
-// const FormBlock = styled.div`
-//   display: flex;
-//   margin: 0 auto;
-//   width: 70%;
-//   box-shadow: 0 0 8px #9e9797 !important;
-//   padding: 25px !important;
-
-//   .ant-select {
-//     flex: 0.5;
-//   }
-//   .form {
-//     flex: 2;
-//   }
-//   label {
-//     color: #5a5050;
-//     font-size: 16px !important;
-//     font-weight: 500;
-//   }
-// `;
-
-// const Questionanswer = () => {
-//   const [data, setData] = useState();
-//   const handleChange = (value) => {
-//     // console.log(value);
-//     setData(value);
-//     console.log(`data=${value}`);
-//   };
-//   return (
-//     <>
-//       <FormBlock>
-//         <div className="form">
-//           <Form.Item
-//             name="Question"
-//             label=" Question"
-//             rules={[
-//               {
-//                 required: true,
-//               },
-//             ]}
-//           >
-//             <InputStyle />
-//           </Form.Item>
-//           {data === "1" ? <Rating /> : <Answer />}
-//         </div>
-//         <Drop onChange={handleChange} />
-//       </FormBlock>
-//     </>
-//   );
-// };
-
-// export default Questionanswer;
-
 import React, { useState } from "react";
 import { Form, Button, Space, Select } from "antd";
 import styled from "@emotion/styled";
@@ -65,7 +5,7 @@ import Drop from "../dropdown";
 import Subjective from "../subjective";
 import Rating from "../rating/Rating";
 import { InputStyle } from "../../atoms/InputStyle";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 
 const SpaceStyle = styled(Space)`
   .ant-space-item {
@@ -73,11 +13,14 @@ const SpaceStyle = styled(Space)`
   }
 `;
 const FormBlock = styled.div`
+  position: relative;
   display: flex;
   margin: 40px auto;
   width: 70%;
-  box-shadow: 0 0 8px #9e9797 !important;
+  margin-bottom: 0px;
+  box-shadow: 0 3px 8px #9e9797 !important;
   padding: 25px !important;
+  border-radius: 5px;
 
   .ant-select {
     flex: 0.5;
@@ -102,20 +45,35 @@ const SelectStyle = styled(Select)`
     padding: 5px 20px !important;
   }
 `;
-const Remove = styled(MinusCircleOutlined)`
-  margin-top: 165px;
+
+const RemoveButtonStyle = styled(Button)`
+  position: absolute;
+  right: 25px;
+  top: 114px;
+  transition: 0.5s ease;
+  border-radius: 3px;
+  :hover {
+    background: red;
+    border-color: red;
+    color: white;
+  }
 `;
+
 const Buttonstyle = styled(Button)`
   width: 35%;
-  margin-left: 173px;
+  margin-left: 110px;
+  height: 40px;
   font-weight: 600;
-  border: 2px solid #83afcc;
+  border: 3px solid #83afcc;
   border-radius: 5px;
+  color: #83afcc;
+  margin-top: 40px;
 `;
 const Questionanswer = ({ form }) => {
   const [data, setData] = useState("Subjective");
-  // const [qtype, setQtype] = useState([{ questiontype: "Subjective" }]);
+  let initailObj = { questiontype: "Subjective" };
   const [qtype, setQtype] = useState([]);
+  // const [qtype, setQtype] = useState([]);
   const { Option } = Select;
 
   const handleChange = (value) => {
@@ -123,17 +81,14 @@ const Questionanswer = ({ form }) => {
     console.log(data);
   };
 
-  // const onHandle = () => {
-  //   const check = form.getFieldValue("questionslist");
-  //   setQtype(check);
-  //   console.log(qtype);
-  // };
-
-  const addbtn = () => {
-    const check = form.getFieldValue("surveytitle");
-    // console.log(check);
+  const onHandle = () => {
+    const check = form.getFieldValue("questionslist");
     setQtype(check);
     console.log(qtype);
+  };
+
+  const addbtn = () => {
+    setQtype((prev) => [...prev, initailObj]);
   };
 
   return (
@@ -183,14 +138,11 @@ const Questionanswer = ({ form }) => {
                           <InputStyle />
                         </Form.Item>
 
-                        {
-                          // qtype.length > 0 &&
-                          qtype[idx].questiontype === "Subjective" ? (
-                            <Subjective />
-                          ) : (
-                            <Rating />
-                          )
-                        }
+                        {qtype[idx].questiontype === "Subjective" ? (
+                          <Subjective />
+                        ) : (
+                          <Rating />
+                        )}
                       </div>
                       <Form.Item
                         initialValue="Subjective"
@@ -198,25 +150,25 @@ const Questionanswer = ({ form }) => {
                         name={[field.name, "questiontype"]}
                         fieldKey={[field.fieldKey, "questiontype"]}
                       >
-                        <SelectStyle style={{ width: 200 }}>
+                        <SelectStyle style={{ width: 200 }} onChange={onHandle}>
                           <Option value="Subjective">Subjective</Option>
                           <Option value="Rating">Rating</Option>
                         </SelectStyle>
                       </Form.Item>
-
-                      <Remove
+                      <RemoveButtonStyle
                         onClick={() => {
                           remove(field.name);
                         }}
-                      />
+                      >
+                        <DeleteOutlined />
+                      </RemoveButtonStyle>
                     </FormBlock>
                   </SpaceStyle>
                 ))}
                 <Form.Item>
                   <Buttonstyle
-                    type="primary"
+                    // type="primary"
                     onClick={() => (add(), addbtn())}
-                    // onClick={() => add()}
                     block
                   >
                     <PlusOutlined /> Add Questions

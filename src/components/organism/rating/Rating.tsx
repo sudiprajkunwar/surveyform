@@ -4,7 +4,7 @@ import { Rate, Form } from "antd";
 const Rating = () => {
   return (
     <Form.Item label=" Rating">
-      <Rate />
+    <Rate allowHalf defaultValue={2.5} />
     </Form.Item>
   );
 };
