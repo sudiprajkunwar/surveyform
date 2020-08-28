@@ -67,13 +67,12 @@ const Buttonstyle = styled(Button)`
   border: 3px solid #83afcc;
   border-radius: 5px;
   color: #83afcc;
-  margin-top: 40px;
+  margin-top: 33px;
 `;
 const Questionanswer = ({ form }) => {
   const [data, setData] = useState("Subjective");
   let initailObj = { questiontype: "Subjective" };
   const [qtype, setQtype] = useState([]);
-  // const [qtype, setQtype] = useState([]);
   const { Option } = Select;
 
   const handleChange = (value) => {
@@ -150,7 +149,7 @@ const Questionanswer = ({ form }) => {
                         name={[field.name, "questiontype"]}
                         fieldKey={[field.fieldKey, "questiontype"]}
                       >
-                        <SelectStyle style={{ width: 200 }} onChange={onHandle}>
+                        <SelectStyle style={{ width: 125 }} onChange={onHandle}>
                           <Option value="Subjective">Subjective</Option>
                           <Option value="Rating">Rating</Option>
                         </SelectStyle>

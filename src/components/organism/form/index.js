@@ -4,12 +4,11 @@ import styled from "@emotion/styled";
 import Questionanswer from "../Q&A";
 import { InputStyle } from "../../atoms/InputStyle";
 
+const SurveyTitle = styled.section`
+  padding-left: 40px !important;
+`;
 const FormStyle = styled(Form)`
   margin-top: 40px;
-
-  .ant-form-item {
-    padding-left: 40px !important;
-  }
   .ant-col-8 {
     max-width: 106px;
   }
@@ -58,15 +57,10 @@ const layout = {
     span: 8,
   },
   wrapperCol: {
-    span: 12,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
     span: 16,
   },
 };
+
 const SurveyForm = () => {
   const [form] = Form.useForm();
 
@@ -76,17 +70,19 @@ const SurveyForm = () => {
 
   return (
     <FormStyle {...layout} form={form} name="control-hooks" onFinish={onFinish}>
-      <Form.Item
-        name="surveytitle"
-        label="Survey Title"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <InputStyle placeholder="Enter survey title" />
-      </Form.Item>
+      <SurveyTitle>
+        <Form.Item
+          name="surveytitle"
+          label="Survey Title"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <InputStyle placeholder="Enter survey title" />
+        </Form.Item>
+      </SurveyTitle>
       <Questionanswer form={form} />
       {/* <Test /> */}
       <Form.Item>
