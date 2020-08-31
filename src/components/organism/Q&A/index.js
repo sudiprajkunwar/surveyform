@@ -29,7 +29,7 @@ const FormBlock = styled.div`
     flex: 2;
   }
   label {
-    color: #5a5050;
+    color: #171515;
     font-size: 16px !important;
     font-weight: 500;
   }
@@ -64,9 +64,9 @@ const Buttonstyle = styled(Button)`
   margin-left: 110px;
   height: 40px;
   font-weight: 600;
-  border: 3px solid #83afcc;
+  border: 3px solid #365073;
   border-radius: 5px;
-  color: #83afcc;
+  color: #365073;
   margin-top: 33px;
 `;
 const Questionanswer = ({ form }) => {
@@ -88,6 +88,19 @@ const Questionanswer = ({ form }) => {
 
   const addbtn = () => {
     setQtype((prev) => [...prev, initailObj]);
+  };
+
+  const rem = (idx) => {
+    console.log("id", idx);
+    console.log("first", qtype);
+    const items = [...qtype];
+    // const items = Object.assign([], qtype);
+    items.splice(idx, 1);
+    setQtype(items);
+
+    // const items = [...qtype].splice(idx, 1);
+    // console.log(items);
+    // setQtype(items);
   };
 
   return (
@@ -146,6 +159,7 @@ const Questionanswer = ({ form }) => {
                       <Form.Item
                         initialValue="Subjective"
                         {...field}
+                        id={idx}
                         name={[field.name, "questiontype"]}
                         fieldKey={[field.fieldKey, "questiontype"]}
                       >
@@ -155,9 +169,7 @@ const Questionanswer = ({ form }) => {
                         </SelectStyle>
                       </Form.Item>
                       <RemoveButtonStyle
-                        onClick={() => {
-                          remove(field.name);
-                        }}
+                        onClick={() => (remove(field.name), rem(idx))}
                       >
                         <DeleteOutlined />
                       </RemoveButtonStyle>

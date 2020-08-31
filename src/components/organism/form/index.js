@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button } from "antd";
 import styled from "@emotion/styled";
 import Questionanswer from "../Q&A";
@@ -15,7 +15,7 @@ const FormStyle = styled(Form)`
   label {
     font-weight: 500;
     font-size: 17px;
-    color: #888888;
+    color: #171515;
     :before {
       display: none !important;
     }
