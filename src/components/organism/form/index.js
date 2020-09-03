@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "antd";
 import styled from "@emotion/styled";
 import Questionanswer from "../Q&A";
@@ -69,7 +69,13 @@ const SurveyForm = () => {
   };
 
   return (
-    <FormStyle {...layout} form={form} name="control-hooks" onFinish={onFinish}>
+    <FormStyle
+      {...layout}
+      form={form}
+      name="control-hooks"
+      onFinish={onFinish}
+      initialValues={{ questionslist: [{ options: ["", ""] }] }}
+    >
       <SurveyTitle>
         <Form.Item
           name="surveytitle"

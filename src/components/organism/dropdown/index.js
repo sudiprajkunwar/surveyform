@@ -31,6 +31,7 @@ const Drop = ({ onChange, name }) => {
       <SelectStyle style={{ width: 125 }} onChange={onChange}>
         <Option value="Subjective">Subjective</Option>
         <Option value="Rating">Rating</Option>
+        <Option value="Objective">Objective</Option>
       </SelectStyle>
     </Form.Item>
   );
