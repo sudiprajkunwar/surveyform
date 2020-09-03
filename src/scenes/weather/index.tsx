@@ -7,7 +7,7 @@ const WeatherBlock = styled.div`
   margin: auto;
   background: #113b65;
   color: white;
-  padding: 5px 117px;
+  padding: 5px 40px;
 `;
 const Weather = () => {
   let API_KEY = "6e332557bacfa8342e07a6a522a1db8b";
@@ -22,7 +22,6 @@ const Weather = () => {
         .then((data) => setData(data));
     });
   };
-  console.log(data);
 
   useEffect(() => {
     nav();
@@ -30,8 +29,8 @@ const Weather = () => {
 
   return (
     <WeatherBlock>
-      <div className="weather--name">City: {data?.name}</div>
-      <div className="weather--temp">Temp: {data?.main.temp} C</div>
+      <div className="weather--name">Location: {data?.name}</div>
+      <div className="weather--temp">Temperature: {data?.main.temp} C</div>
       <div className="weather--cloud">Weather: {data?.weather[0].main}</div>
     </WeatherBlock>
   );

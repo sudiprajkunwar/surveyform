@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Space, Input, Button } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
@@ -10,15 +10,9 @@ const InputStyle = styled(Input)`
 const Remove = styled(MinusCircleOutlined)`
   position: absolute;
   right: -17px;
-  // top: 151px;
+  padding-top: 11px;
 `;
-const OptionList = ({ name, form }) => {
-  // const [data, setData] = useState({});
-  // const addOption = () => {
-  //   const check = form.getFieldValue("options");
-  //   setData(check);
-  //   console.log(check);
-  // };
+const Options = ({ name }) => {
   return (
     <Form.List name={[name, "options"]}>
       {(fields, { add, remove }) => {
@@ -52,8 +46,8 @@ const OptionList = ({ name, form }) => {
             <Form.Item>
               <Button
                 type="dashed"
-                onClick={() =>
-                  add()
+                onClick={
+                  () => add()
                   //  addOption()
                 }
                 block
@@ -68,4 +62,4 @@ const OptionList = ({ name, form }) => {
   );
 };
 
-export default OptionList;
+export default Options;

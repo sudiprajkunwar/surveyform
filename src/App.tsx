@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
-import SurveyForm from "./components/organism/form";
-import Heading from "./components/organism/heading";
+import SurveyForm from "./scenes/form";
+import Heading from "./scenes/heading";
 import styled from "@emotion/styled";
-import Weather from "./components/organism/weather";
+import Weather from "./scenes/weather";
 
 const Block = styled.div`
   margin: 30px 0;

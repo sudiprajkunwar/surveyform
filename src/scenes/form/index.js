@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button } from "antd";
 import styled from "@emotion/styled";
-import Questionanswer from "../Q&A";
-import { InputStyle } from "../../atoms/InputStyle";
+import Questionanswer from "./components/Q&A";
+import { InputStyle } from "../../components/InputStyle";
 
 const SurveyTitle = styled.section`
   padding-left: 40px !important;
@@ -44,13 +44,6 @@ const ButtonBlock = styled.div`
     }
   }
 `;
-
-// const FormBlock = styled.div`
-//   margin: 0 auto;
-//   width: 50%;
-//   box-shadow: 0 0 8px #9e9797 !important;
-//   padding: 25px !important;
-// `;
 
 const layout = {
   labelCol: {

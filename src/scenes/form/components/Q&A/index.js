@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button, Space, Select, Input } from "antd";
+import { Form, Button, Space, Select } from "antd";
 import styled from "@emotion/styled";
-import Drop from "../dropdown";
 import Subjective from "../subjective";
 import Rating from "../rating/Rating";
-import { InputStyle } from "../../atoms/InputStyle";
+import { InputStyle } from "../../../../components/InputStyle";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import OptionList from "../option/OptionList";
 import Options from "../option";
 
 const SpaceStyle = styled(Space)`
@@ -73,15 +71,9 @@ const Buttonstyle = styled(Button)`
   margin-top: 33px;
 `;
 const Questionanswer = ({ form }) => {
-  // const [data, setData] = useState("Subjective");
   let initailObj = { questiontype: "Subjective" };
   const [qtype, setQtype] = useState([{ questiontype: "Subjective" }]);
   const { Option } = Select;
-
-  // const handleChange = (value) => {
-  //   setData(value);
-  //   console.log(data);
-  // };
 
   const onHandle = () => {
     const check = form.getFieldValue("questionslist");
@@ -165,8 +157,8 @@ const Questionanswer = ({ form }) => {
                             case "Objective":
                               return (
                                 <>
-                                  <Form.Item label="options">
-                                    <OptionList name={field.name} form={form} />
+                                  <Form.Item label="Options">
+                                    <Options name={field.name} />
                                   </Form.Item>
                                 </>
                               );
